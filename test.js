@@ -5,7 +5,7 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity,ToastAndroid
+  TouchableOpacity,
 } from "react-native";
 
 export default function App() {
@@ -22,33 +22,9 @@ export default function App() {
     setPet({ ...pet, age: value });
   };
 
-  const saveData = async() => {
-    var data = { name: pet.name, age: pet.age };
-    
-    await fetch("http://192.168.1.1:8080/api/Pets", {
-      // method: "GET"
-      // Adding method type
-      method: "POST",
-
-      // Adding body or contents to send
-      body: JSON.stringify({
-        name: data.name,
-        age: parseInt(data.age)
-      }),
-
-      // Adding headers to the request
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      }
-    })
-      .then((res) => res.json())
-      .catch((error) => console.error("Error:", error))
-      .then((response) => showToast() );
-  };;
-
-  const showToast=() => {
-        ToastAndroid.show("a new pet has been added !", ToastAndroid.SHORT);
-      }
+  const saveData = () => {
+console.log("hello")
+  };
   // var url = "https://localhost:44396/pets";
   // var data = { name: pet.name,age:pet.age };
   // console.log(data)
@@ -87,25 +63,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
-    padding: 8,
-    margin: 50,
-  },
-  title: {
-    color: "red",
-    fontSize: 30,
-    textAlign: "center",
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    padding: 10,
-    marginVertical: 5,
-  },
-});
